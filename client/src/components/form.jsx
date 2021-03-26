@@ -40,6 +40,10 @@ export default function FormCard() {
 		],
 	});
 
+    const setSkillName = (e, i) => {
+        console.log(e.target.value, i)
+    }
+
 	return (
 		<Card className={classes.root}>
 			<CardContent>
@@ -61,9 +65,11 @@ export default function FormCard() {
 					value={formData?.name}
 				/>
 				<br />
-				<Divider style={{ marginTop: '1rem', marginRight: '1rem' }} />
-				<br />
-				{formData?.skills.map(({ name, profeciency }) => 
+				<Divider style={{ marginTop: '1rem', marginRight: '1rem', marginBottom: '1rem' }} />
+                <Typography variant="body2" color="textSecondary" component="p">
+					Skills
+				</Typography>
+				{formData?.skills.map(({ name, profeciency }, i) => 
 					<TextField
                         style={{ marginTop: '1rem' }}
                         key={name}
@@ -74,6 +80,7 @@ export default function FormCard() {
 						}}
 						variant="outlined"
 						value={name}
+                        onChange={(e) => setSkillName(e, i)}
 					/>
 				)}
 			</CardContent>
