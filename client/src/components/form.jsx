@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -61,6 +63,15 @@ export default function FormCard() {
 		setformData({..._formData});
 	};
 
+    const removeSkill = (i) => {
+        const _formData = formData;
+		console.log('current: ', formData);
+		_formData.skills.splice(i, 1)
+
+		console.log('updated: ', _formData);
+		setformData({..._formData});
+    }
+
 	return (
 		<Card className={classes.root}>
 			<CardContent>
@@ -98,6 +109,9 @@ export default function FormCard() {
 						variant="outlined"
 						defaultValue={name}
 						onChange={(e) => setSkillName(e, i)}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end" onClick={(e)=>removeSkill(e, i)}><CloseIcon></CloseIcon></InputAdornment>,
+                          }}
 					/>
 				))}
 				<Button variant="contained" color="primary" style={{ marginTop: '1rem' }} onClick={() => addSkill()}>
