@@ -7,15 +7,21 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		maxWidth: 345,
+		'& > *': {
+			margin: theme.spacing(1),
+			width: '25ch',
+		},
 	},
 	media: {
 		height: 140,
 	},
-});
+}));
 
 export default function FormCard() {
 	const classes = useStyles();
@@ -28,7 +34,7 @@ export default function FormCard() {
 				profeciency: 'expert',
 			},
 			{
-				name: 'ninjutsu',
+				name: 'jujutsu',
 				profeciency: 'expert',
 			},
 		],
@@ -36,30 +42,42 @@ export default function FormCard() {
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea>
-				<CardMedia
-					className={classes.media}
-					image="/static/images/cards/contemplative-reptile.jpg"
-					title="Contemplative Reptile"
+			<CardContent>
+				<Typography gutterBottom variant="h5" component="h2">
+					React JSON Form
+				</Typography>
+				<Typography variant="body2" color="textSecondary" component="p">
+					Editing the form contents generates JSON
+				</Typography>
+				<br />
+				{/* <TextField id="outlined-basic" label="Outlined" variant="outlined" value={formData?.name} onChange={(e) => setformData({formData.name: })}/> */}
+				<TextField
+					id="outlined-name"
+					label="Name"
+					InputLabelProps={{
+						shrink: true,
+					}}
+					variant="outlined"
+					value={formData?.name}
 				/>
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="h2">
-						Lizard
-					</Typography>
-					<Typography variant="body2" color="textSecondary" component="p">
-						Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
-						continents except Antarctica
-					</Typography>
-				</CardContent>
-			</CardActionArea>
-			<CardActions>
-				<Button size="small" color="primary">
-					Share
-				</Button>
-				<Button size="small" color="primary">
-					Learn More
-				</Button>
-			</CardActions>
+				<br />
+				<Divider style={{ marginTop: '1rem', marginRight: '1rem' }} />
+				<br />
+				{formData?.skills.map(({ name, profeciency }) => 
+					<TextField
+                        style={{ marginTop: '1rem' }}
+                        key={name}
+						id="outlined-name"
+						label="Name"
+						InputLabelProps={{
+							shrink: true,
+						}}
+						variant="outlined"
+						value={name}
+					/>
+				)}
+			</CardContent>
+			<CardActions></CardActions>
 		</Card>
 	);
 }
