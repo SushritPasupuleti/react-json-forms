@@ -45,11 +45,20 @@ export default function FormCard() {
 
 		const _formData = formData;
 		console.log('current: ', formData);
-        console.log(_formData.skills[i].name, e.target.value)
+		console.log(_formData.skills[i].name, e.target.value);
 		_formData.skills[i].name = e.target.value;
 
 		console.log('updated: ', _formData);
 		setformData(_formData);
+	};
+
+	const addSkill = () => {
+		const _formData = formData;
+		console.log('current: ', formData);
+		_formData.skills.push({ name: '', profeciency: '' });
+
+		console.log('updated: ', _formData);
+		setformData({..._formData});
 	};
 
 	return (
@@ -77,7 +86,7 @@ export default function FormCard() {
 				<Typography variant="body2" color="textSecondary" component="p">
 					Skills
 				</Typography>
-				{formData?.skills.map(({ name, profeciency }, i) => (
+				{formData.skills.map(({ name, profeciency }, i) => (
 					<TextField
 						style={{ marginTop: '1rem' }}
 						key={name}
@@ -91,6 +100,9 @@ export default function FormCard() {
 						onChange={(e) => setSkillName(e, i)}
 					/>
 				))}
+				<Button variant="contained" color="primary" style={{ marginTop: '1rem' }} onClick={() => addSkill()}>
+					Add Skill
+				</Button>
 			</CardContent>
 			<CardActions></CardActions>
 		</Card>
