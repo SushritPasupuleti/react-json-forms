@@ -114,6 +114,7 @@ export default function FormCard() {
                           }}
 					/>
 				))}
+				<br />
 				<Button variant="contained" color="primary" style={{ marginTop: '1rem' }} onClick={() => addSkill()}>
 					Add Skill
 				</Button>
