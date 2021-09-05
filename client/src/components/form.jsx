@@ -47,10 +47,11 @@ export default function FormCard() {
 	const setSkillName = (e, i) => {
 		console.log(e.target.value, i);
 
-		const _formData = formData;
+		let _formData = formData;
 		console.log('current: ', formData);
-		console.log(_formData.skills[i].name, e.target.value);
-		_formData.skills[i].name = e.target.value;
+		// console.log(_formData.skills[i].name, e.target.value);
+		// _formData.skills[i].name = e.target.value;
+		_formData = _formData.map(obj => obj.id === i ? {...obj, name: e.target.value} : obj)
 
 		console.log('updated: ', _formData);
 		setformData(_formData);
