@@ -32,10 +32,12 @@ export default function FormCard() {
 		name: 'batman',
 		skills: [
 			{
+				id: 1,
 				name: 'ninjutsu',
 				profeciency: 'expert',
 			},
 			{
+				id: 2,
 				name: 'jujutsu',
 				profeciency: 'expert',
 			},
@@ -57,7 +59,7 @@ export default function FormCard() {
 	const addSkill = () => {
 		const _formData = formData;
 		console.log('current: ', formData);
-		_formData.skills.push({ name: '', profeciency: '' });
+		_formData.skills.push({ name: '', profeciency: '', id: Date.now() });
 
 		console.log('updated: ', _formData);
 		setformData({..._formData});
