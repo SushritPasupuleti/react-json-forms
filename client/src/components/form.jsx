@@ -71,9 +71,9 @@ export default function FormCard() {
     setformData({ ..._formData });
   };
 
-  const removeSkill = (i) => {
+  const removeSkill = (e, i) => {
     let _formData = formData;
-    console.log("current: ", formData);
+    console.log("current: ", formData, i);
     // _formData.skills.splice(i, 1)
     _formData = {
       ..._formData,
