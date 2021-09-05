@@ -99,10 +99,10 @@ export default function FormCard() {
 				<Typography variant="body2" color="textSecondary" component="p">
 					Skills
 				</Typography>
-				{formData.skills.map(({ name, profeciency }, i) => (
+				{formData.skills.map(({ name, profeciency, id }, i) => (
 					<TextField
 						style={{ marginTop: '1rem' }}
-						key={name}
+						key={id}
 						id="outlined-name"
 						label="Name"
 						InputLabelProps={{
@@ -110,9 +110,9 @@ export default function FormCard() {
 						}}
 						variant="outlined"
 						defaultValue={name}
-						onChange={(e) => setSkillName(e, i)}
+						onChange={(e) => setSkillName(e, id)}
                         InputProps={{
-                            endAdornment: <InputAdornment position="end" onClick={(e)=>removeSkill(e, i)}><CloseIcon></CloseIcon></InputAdornment>,
+                            endAdornment: <InputAdornment position="end" onClick={(e)=>removeSkill(e, id)}><CloseIcon></CloseIcon></InputAdornment>,
                           }}
 					/>
 				))}
