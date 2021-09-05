@@ -68,7 +68,8 @@ export default function FormCard() {
     const removeSkill = (i) => {
         const _formData = formData;
 		console.log('current: ', formData);
-		_formData.skills.splice(i, 1)
+		// _formData.skills.splice(i, 1)
+		_formData = _formData.filter(obj => obj.id !== i);
 
 		console.log('updated: ', _formData);
 		setformData({..._formData});
@@ -110,9 +111,9 @@ export default function FormCard() {
 						}}
 						variant="outlined"
 						defaultValue={name}
-						onChange={(e) => setSkillName(e, id)}
+						onChange={(e) => setSkillName(e, i)}
                         InputProps={{
-                            endAdornment: <InputAdornment position="end" onClick={(e)=>removeSkill(e, id)}><CloseIcon></CloseIcon></InputAdornment>,
+                            endAdornment: <InputAdornment position="end" onClick={(e)=>removeSkill(e, i)}><CloseIcon></CloseIcon></InputAdornment>,
                           }}
 					/>
 				))}
