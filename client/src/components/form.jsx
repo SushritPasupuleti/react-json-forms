@@ -32,12 +32,12 @@ export default function FormCard() {
 		name: 'batman',
 		skills: [
 			{
-				id: 1,
+				id: 123123,
 				name: 'ninjutsu',
 				profeciency: 'expert',
 			},
 			{
-				id: 2,
+				id: 245456456,
 				name: 'jujutsu',
 				profeciency: 'expert',
 			},
